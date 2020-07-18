@@ -42,5 +42,10 @@ namespace Model\StudentModel
             $stmt =  $this->conn->prepare($sql);
             return $stmt->execute();
         }
+
+        public function updateStudent($data)
+        {
+            return $data;
+        }
     }
 }

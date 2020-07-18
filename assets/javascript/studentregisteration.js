@@ -1,6 +1,8 @@
 $(document).ready(function(){
     $(".student-details").DataTable();
 
+    $.id = 0;
+
     $(document).on('click','.submitChanges', function(){
         var fname = $(document).find('.first_name').val();
         var lname = $(document).find('.last_name').val();
@@ -32,17 +34,23 @@ $(document).ready(function(){
         var id = $(this).data('delete');
         $.ajax({
             url : getUrl,
-            method : 'GET',
+            method : 'POST',
             data :{
                 delete : id,
+                flagger : 2
             },
-           // dataType : JSON,
             success : function(response){
-                //if(response != null) location.reload();
+               // if(response != null) location.reload();
             },
             error : function(response){
                 console.error(response);
             }
         });
+    });
+
+    
+    $(document).on('click','.updateStudent', function(){
+        var id = $(this).data('update');
+       $(document).find('.studentModal').modal();
     });
 });

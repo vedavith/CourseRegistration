@@ -2,7 +2,7 @@
 <main class="container mt-4" style="padding-top:2rem;">
     <section class="row modalHead">
      <div class="col-md-6 pull-left">
-     <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModal">
+     <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#studentModal">
         Create Student Details
     </button>
      </div>
@@ -35,8 +35,8 @@
                     <td> <?php echo $data['contact']; ?> </td>
                     <td> 
                         <div class="row">
-                            <div class="col-md-6" align="right"> <button class="btn btn-sm btn-primary editstudent"> Edit </button></div>
-                            <div class="col-md-6 deleteStudent" align="left"> <button class="btn btn-sm btn-danger deleteStudent" data-url = "<?php echo url()."controller/Student.php"; ?>" data-delete="<?php echo $data['id']; ?>"> Delete </button> </div>
+                            <div class="col-md-6" align="right"> <button type="button" class="btn btn-sm btn-primary editstudent" data-url = "<?php echo url()."controller/student.php"; ?>" data-update="<?php echo $data['id']; ?>"> Edit </button></div>
+                            <div class="col-md-6" align="left"> <button type="button" class="btn btn-sm btn-danger deleteStudent" data-url = "<?php echo url()."controller/student.php"; ?>" data-delete="<?php echo $data['id']; ?>"> Delete </button> </div>
                         </div> 
                     </td>
                 </tr>
@@ -48,7 +48,7 @@
     </section>
     <!-- Student Details -->
     <section class="detailsModal">
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade studentModal" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="studentModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -66,7 +66,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary submitChanges" data-url="<?php echo url()."controller/Student.php" ?>">Save changes</button>
+                    <button type="button" class="btn btn-primary submitChanges" data-url="<?php echo url()."controller/Student" ?>">Save changes</button>
                 </div>
                 <!-- </form> -->
                 </div>

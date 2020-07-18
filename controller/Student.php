@@ -41,6 +41,19 @@ namespace Controller\StudentController
             return $isDelete;
         }
 
+        public function updateStudentData($id,$firstname,$lastname,$dob,$contact)
+        {
+            $data = [
+                "id" => $id,
+                "first_name" => $firstname,
+                "last_name" => $lastname,
+                "dob" => $dob,
+                "contact" => $contact
+            ];
+            
+            return true;
+        }
+
     }
  
     use Controller\StudentController\Student as Stu;
@@ -48,36 +61,32 @@ namespace Controller\StudentController
     $home->render_home();
     if(isset($_POST))
     {
-       // $home = new Stu();
-        if(isset($_POST['flagger']))
+        if(isset($_POST['flagger']) && $_POST['flagger'] == 1)
         {
             $firstname = $_POST['first_name'];
-            $lastname = $_POST['first_name'];
+            $lastname = $_POST['last_name'];
             $dob = $_POST['dob'];
             $contact = $_POST['contact'];
-           if($home->insertStudentData($firstname,$lastname,$dob,$contact))
-           {
-               echo "<script>alert('Student Created'); location.reload(true);</script>";
-           }
+           $home->insertStudentData($firstname,$lastname,$dob,$contact);           
         }
-        else
+        
+        if(isset($_POST['flagger']) && $_POST['flagger'] == 0)
         {
-            return false;
-           // $home->updateStudentData();
+            $id = $_POST['id'];
+            $firstname = $_POST['first_name'];
+            $lastname = $_POST['last_name'];
+            $dob = $_POST['dob'];
+            $contact = $_POST['contact'];
+           return $home->updateStudentData($id,$first_name,$last_name,$dob,$contact);
         }
+
+        if(isset($_POST['flagger']) && $_POST['flagger'] == 2)
+        {
+           $isDelete = $home->deleteStudentData($_POST['delete']);
+          
+        }
+
     }
 
-    if(isset($_GET))
-    {
-        if(isset($_GET['delete']))
-        {
-            print_r($_GET);
-            exit;
-            $isDelete = $home->deleteStudentData($_GET['delete']);
-            if($isDelete)
-            {
-                echo "<script> alert('deleted'); </script>";
-            }
-        }
-    }
+   
 }
