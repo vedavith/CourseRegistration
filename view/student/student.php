@@ -59,6 +59,7 @@
                 </div>
                 <!-- <form method="post" class="student_form"> -->
                 <div class="modal-body">
+                    <input class="form-control id" type="hidden" value="0">
                     <input class="form-control first_name" type="text" name="first_name" id="first_name" placeholder="First Name"><br>
                     <input class="form-control last_name" type="text" name="last_name" id="last_name" placeholder = "Last Name"><br>
                     <input class="form-control dob" type="date" name="dob" id="dob" placeholder="DOB"><br>

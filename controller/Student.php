@@ -37,6 +37,7 @@ namespace Controller\StudentController
 
         public function deleteStudentData($id)
         {
+            echo $id;
             $isDelete =  $this->studentObj->deleteStudent($id);
             return $isDelete;
         }
@@ -50,8 +51,8 @@ namespace Controller\StudentController
                 "dob" => $dob,
                 "contact" => $contact
             ];
-            
-            return true;
+            $isUpdate = $this->studentObj->updateStudent($data);
+            return $isUpdate;
         }
 
     }
@@ -63,27 +64,27 @@ namespace Controller\StudentController
     {
         if(isset($_POST['flagger']) && $_POST['flagger'] == 1)
         {
+            echo "<pre>";
+            print_r($_POST);
+            echo "</pre>";
             $firstname = $_POST['first_name'];
             $lastname = $_POST['last_name'];
             $dob = $_POST['dob'];
             $contact = $_POST['contact'];
-           $home->insertStudentData($firstname,$lastname,$dob,$contact);           
+            if($_POST['id'] == 0)
+            {
+                $home->insertStudentData($firstname,$lastname,$dob,$contact);
+            }
+            else
+            {
+                $id = $_POST['id'];
+                $home->updateStudentData($id,$firstname,$lastname,$dob,$contact);
+            }
         }
         
-        if(isset($_POST['flagger']) && $_POST['flagger'] == 0)
-        {
-            $id = $_POST['id'];
-            $firstname = $_POST['first_name'];
-            $lastname = $_POST['last_name'];
-            $dob = $_POST['dob'];
-            $contact = $_POST['contact'];
-           return $home->updateStudentData($id,$first_name,$last_name,$dob,$contact);
-        }
-
         if(isset($_POST['flagger']) && $_POST['flagger'] == 2)
         {
-           $isDelete = $home->deleteStudentData($_POST['delete']);
-          
+           $home->deleteStudentData($_POST['delete']);
         }
 
     }

@@ -45,7 +45,9 @@ namespace Model\StudentModel
 
         public function updateStudent($data)
         {
-            return $data;
+            $sql = "UPDATE studentregistration SET first_name ='".$data['first_name']."' , last_name = '".$data['last_name']."' ,dob = '".$data['dob']."' ,contact = '".$data['contact']."' WHERE id = '".$data['id']."'";
+            $stmt =  $this->conn->prepare($sql);
+            return $stmt->execute();
         }
     }
 }

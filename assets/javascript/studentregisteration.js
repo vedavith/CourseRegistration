@@ -1,29 +1,20 @@
 $(document).ready(function(){
     $(".student-details").DataTable();
 
-    $.id = 0;
-
     $(document).on('click','.submitChanges', function(){
-        if($.id != 0)
-        {
-         var id = $.id;
-        }
-        else
-        {
-            var id = 0;
-        }
-
         var fname = $(document).find('.first_name').val();
         var lname = $(document).find('.last_name').val();
         var birthday = $(document).find('.dob').val();
         var phone = $(document).find('.phone').val();
-        var flag = 1;
+        var getId = $(document).find('.id').val(); 
+        var flag = 1; 
         var getUrl = $(this).data('url');
+
         $.ajax({
             url : getUrl,
             method : 'POST',
             data :{
-                id : id,
+                id : getId,
                 first_name  : fname,
                 last_name : lname,
                 dob : birthday,
@@ -63,7 +54,8 @@ $(document).ready(function(){
        
         var studentData = $('#student_' + $(this).data("update"));
 
-        $(document).find('.first_name').val(studentData.data('firstname'));
+        $(document).find('.id').val($(this).data("update"));
+        $(document).find('.first_name').val (studentData.data('firstname'));
         $(document).find('.last_name').val(studentData.data('lastname'));
         $(document).find('.dob').val(studentData.data('dob'));
         $(document).find('.phone').val(studentData.data('contact'));
