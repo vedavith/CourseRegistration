@@ -4,6 +4,15 @@ $(document).ready(function(){
     $.id = 0;
 
     $(document).on('click','.submitChanges', function(){
+        if($.id != 0)
+        {
+         var id = $.id;
+        }
+        else
+        {
+            var id = 0;
+        }
+
         var fname = $(document).find('.first_name').val();
         var lname = $(document).find('.last_name').val();
         var birthday = $(document).find('.dob').val();
@@ -14,6 +23,7 @@ $(document).ready(function(){
             url : getUrl,
             method : 'POST',
             data :{
+                id : id,
                 first_name  : fname,
                 last_name : lname,
                 dob : birthday,
@@ -49,8 +59,15 @@ $(document).ready(function(){
     });
 
     
-    $(document).on('click','.updateStudent', function(){
-        var id = $(this).data('update');
-       $(document).find('.studentModal').modal();
+    $(document).on('click','.editstudent', function(){
+       
+        var studentData = $('#student_' + $(this).data("update"));
+
+        $(document).find('.first_name').val(studentData.data('firstname'));
+        $(document).find('.last_name').val(studentData.data('lastname'));
+        $(document).find('.dob').val(studentData.data('dob'));
+        $(document).find('.phone').val(studentData.data('contact'));
+       
+        $(document).find('#studentModal').modal('show');
     });
 });

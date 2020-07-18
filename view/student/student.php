@@ -23,7 +23,7 @@
                     {
                 ?>
                 <tr
-                    id = "student_"<?php echo $data['id']; ?>
+                    id = "student_<?php echo $data['id']; ?>"
                     data-firstname = "<?php echo $data['first_name']; ?>"
                     data-lastname = "<?php echo $data['last_name'];?>"
                     data-dob = "<?php echo $data['dob']?>"
