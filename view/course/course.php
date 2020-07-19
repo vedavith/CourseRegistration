@@ -1,11 +1,11 @@
 <script src="../assets/javascript/courseregistration.js" defer></script>
 <main class="container mt-4" style="padding-top:2rem;">
     <section class="row modalHead">
-     <div class="col-md-6 pull-left">
-     <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#courseModal">
-        Create Course 
-    </button>
-     </div>
+        <div class="col-md-6 pull-left">
+            <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#courseModal">
+                Create Course 
+            </button>
+        </div>
     </section>
     <section class="table-body mt-4">
         <table class="table table-bordered course-details">

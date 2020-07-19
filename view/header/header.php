@@ -32,7 +32,7 @@
                         <a class="nav-link" href="<?php echo url()."controller/Course"; ?>">Course Details</a>
                     </li>
                     <li>
-                        <a class="nav-link"> Course Registration </a>
+                        <a class="nav-link" href="<?php echo url()."controller/Registration"; ?>"> Course Registration </a>
                     </li>
                 </ul>
             </div>

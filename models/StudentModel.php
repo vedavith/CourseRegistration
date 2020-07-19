@@ -1,9 +1,9 @@
 <?php 
 namespace Model\StudentModel
 {
-    require 'Database.php';
-    use Model\DatabaseModel\Database as Db;
-    class StudentModel extends Db
+    include_once 'Database.php';
+    use Model\DatabaseModel\Database as DbCopy1;
+    class StudentModel extends DbCopy1
     {
         private $conn;
         private static $instance;
