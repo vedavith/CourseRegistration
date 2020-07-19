@@ -28,10 +28,20 @@ class Registration extends RegData
             $data['registrationData'] = $this->RegObject->getAllRegistrations();
             $data['studentData'] = $this->studentObj->getAllStudents();
             $data['courseData'] = $this->courseObj->getAllCourses();
-            
+
             render_view("header","header");
             render_view("registration","registration",$data);
             render_view("header","footer");
+        }
+
+        public function insertCourseRegistrationData($student,$courseArray)
+        {
+            $data = [
+                "student" => $student,
+                "course" => $courseArray
+            ];
+            $isInsert = $this->RegObject->insertCourseRegistration($data);
+            return $isInsert;
         }
     }
 
@@ -39,5 +49,13 @@ class Registration extends RegData
     $home = new Reg();
     $home->render_home();
 
-   
+    if(isset($_POST))
+    {
+        if((isset($_POST['flagger']))&&($_POST['flagger'] == 1))
+        {
+            $student = $_POST['student'];
+            $courseArray = $_POST['course'];
+            $home->insertCourseRegistrationData($student,$courseArray);
+        }
+    }
 }

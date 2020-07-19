@@ -1,11 +1,12 @@
-<script src="../assets/javascript/registration.js" defer></script>
-<pre>
-  <?php  
+<?php  
        $registrationData = $_SESSION['getData']['registrationData']; 
        $studentData = $_SESSION['getData']['studentData'];
        $courseData = $_SESSION['getData']['courseData'];
-    ?>
-</pre>
+?>
+<script>
+    var courseData = <?php echo json_encode($courseData); ?>
+</script>
+<script src="../assets/javascript/registration.js" defer></script>
 <main class="container mt-4" style="padding-top:2rem;">
     <section class="row modalHead">
         <div class="col-md-6 pull-left">
@@ -46,10 +47,10 @@
     <!-- Student Details -->
     <section class="detailsModal">
         <div class="modal fade courseModal" id="courseModal" tabindex="-1" role="dialog" aria-labelledby="courseModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Course Details</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Registration Details</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -69,21 +70,29 @@
                             }
                         ?>
                     </select><br>
-                    <select class="form-control course" id="course">
-                        <option value="0" selected> Select Course </option>
-                        <?php
-                            foreach($courseData as $course)
-                            {
-                        ?>
-                        <option value="<?php echo $course['id'] ?>"> <?php echo $course['course']; ?> </option>
-                        <?php 
-                            }
-                        ?>
-                    </select>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <select class="form-control course" id="course">
+                                <option value="0" selected> Select Course </option>
+                                <?php
+                                    foreach($courseData as $course)
+                                    {
+                                ?>
+                                <option value="<?php echo $course['id'] ?>"> <?php echo $course['course']; ?> </option>
+                                <?php 
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-sm btn-success add-course"> Add Course </button>
+                        </div>
+                    </div><br>
+                    <div class="course-appender" id="course-appender"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary submitChanges" data-url="<?php echo url()."controller/Course" ?>">Save changes</button>
+                    <button type="button" class="btn btn-primary submitChanges" data-url="<?php echo url()."controller/Registration"; ?>">Save changes</button>
                 </div>
                 <!-- </form> -->
                 </div>

@@ -37,5 +37,18 @@ namespace Model\RegistrationModel
                 exit;
             }
         }
+
+        public function insertCourseRegistration($data)
+        {
+            $course = $data['course'];
+            for($counter = 0; $counter < count($course); $counter++)
+            {
+                $sql = "INSERT INTO studentcourseregistration (studentid,courseid)VALUES('".$data['student']."','".$course[$counter]."')";
+                $stmt =  $this->conn->prepare($sql);
+                $stmt->execute();
+            }
+
+            return true;
+        }
     }
 }
