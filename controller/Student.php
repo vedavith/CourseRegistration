@@ -35,13 +35,6 @@ namespace Controller\StudentController
            return $isInsert;
         }
 
-        public function deleteStudentData($id)
-        {
-            echo $id;
-            $isDelete =  $this->studentObj->deleteStudent($id);
-            return $isDelete;
-        }
-
         public function updateStudentData($id,$firstname,$lastname,$dob,$contact)
         {
             $data = [
@@ -55,6 +48,12 @@ namespace Controller\StudentController
             return $isUpdate;
         }
 
+        public function deleteStudentData($id)
+        {
+            $isDelete =  $this->studentObj->deleteStudent($id);
+            return $isDelete;
+        }
+
     }
  
     use Controller\StudentController\Student as Stu;
@@ -64,9 +63,6 @@ namespace Controller\StudentController
     {
         if(isset($_POST['flagger']) && $_POST['flagger'] == 1)
         {
-            echo "<pre>";
-            print_r($_POST);
-            echo "</pre>";
             $firstname = $_POST['first_name'];
             $lastname = $_POST['last_name'];
             $dob = $_POST['dob'];

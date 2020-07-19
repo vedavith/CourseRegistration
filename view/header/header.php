@@ -18,7 +18,7 @@
 <section class="navigation">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Studnt Course Registration</a>
+            <a class="navbar-brand" href="#">Student Course Registration</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -26,10 +26,10 @@
             <div class="collapse navbar-collapse" id="navbarsExample02">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link active" aria-current="page" href="<?php ?>">Student Registration</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo url()."controller/Student"; ?>">Student Registration</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Course Details</a>
+                        <a class="nav-link" href="<?php echo url()."controller/Course"; ?>">Course Details</a>
                     </li>
                     <li>
                         <a class="nav-link"> Course Registration </a>
