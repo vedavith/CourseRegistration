@@ -2,13 +2,13 @@ $(document).ready(function(){
     $(".registration-details").DataTable();
 
     $(document).on('click','.add-course',function(){
-        htmlAppender = `<div class="row"><div class="col-md-8">`;
+        htmlAppender = `<div class="row canDelete"><div class="col-md-8">`;
         htmlAppender += "<select class='form-control course'><option value='0' selected> Select Course </option>";
         htmlAppender +=  $.returnOptions(courseData);
         htmlAppender += "</select>";
         htmlAppender +=  `</div>
                             <div class="col-md-4">  
-                            <button type="button" class="btn btn-sm btn-danger remove-course"> Remove Course </button>
+                            <button type="button" class="btn btn-sm btn-danger remove-course" data-remove="canDelete"> Remove Course </button>
                             </div></div><br>`;
 
         $(document).find('.course-appender').append(htmlAppender);                            
@@ -42,6 +42,10 @@ $(document).ready(function(){
             }
         });
     });
+
+    $(document).on('click', '.remove-course', function(){
+        $(this).parent().parent().remove();
+      })
 
 });
 
