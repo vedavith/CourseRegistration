@@ -83,7 +83,5 @@ namespace Controller\StudentController
            $home->deleteStudentData($_POST['delete']);
         }
 
-    }
-
-   
+    }   
 }
