@@ -22,8 +22,3 @@ function render_view($folder,$page, $data=null)
     }
 
 }
-
-function redirect_page($page,$data)
-{
-    echo "<script> window.location.href='".url()."src/".$page.".php?db=".$data."' </script>";
-}
